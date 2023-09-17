@@ -19,7 +19,7 @@ const Intro: React.FC<IntroProps> = ({
                 <AiOutlineCaretRight />
                 <GrContactInfo/>
                 </div>
-                <Button switchPage={switchPage}/>
+                <Button switchPage={switchPage} text={'Enroll Now!'}/>
             </div>
         </div>
 

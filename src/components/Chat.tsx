@@ -1,6 +1,9 @@
 import { Header } from "./Header";
-import Chatbot from "react-chatbot-kit";
+import Chatbot from 'react-chatbot-kit';
+import 'react-chatbot-kit/build/main.css';
 import ActionProvider from '../actions/ActionProvider.js';
+import config from "../actions/config.js";
+import MessageParser from "../actions/MessageParser.js";
 
 
 
@@ -18,11 +21,15 @@ const Chat: React.FC<ChatProps> = ({
     return (
         <div>
             <Header switchPage={switchPage} />
-            <div className="h-full w-full App">
-                <header className="App-header">
-                    <Chatbot config={config} actionProvider={ActionProvider}  messageParser={MessageParser}/>
+            <div className="h-full w-full">
+                <header className="">
+                    <Chatbot
+                        config={config}
+                        messageParser={MessageParser}
+                        actionProvider={ActionProvider}
+                    />
                 </header>
-                
+
             </div>
         </div>
     )

@@ -1,9 +1,11 @@
 interface ButtonProps{
     switchPage: (page: 'intro' | 'chat' | 'welcome') => void;
+    text: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
-    switchPage
+    switchPage,
+    text
 }) => {
   return (
     <div className="">
@@ -20,7 +22,7 @@ const Button: React.FC<ButtonProps> = ({
                         focus-visible:outline-2
                         focus-visible:outline-offset-2
                         bg-violet-500 hover:bg-violet-600 focus-visible:outline-violet-600">
-            Enroll Now!
+            {text}
         </button>
     </div>
   )

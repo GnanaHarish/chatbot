@@ -7,3 +7,23 @@
   
 }
 
+.react-chatbot-kit-chat-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.react-chatbot-kit-chat-inner-container {
+  width: 100%;
+}
+
+.react-chatbot-kit-chat-bot-message{
+  width: auto;
+  margin-left: 20px
+}
+
+.react-chatbot-kit-user-chat-message{
+  width: auto;
+  margin-right: 20px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
