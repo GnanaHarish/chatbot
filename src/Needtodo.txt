@@ -1,0 +1,2 @@
+- fix full height issue in mobile view
+-change the chat bubble color

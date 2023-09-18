@@ -1,14 +1,26 @@
 import { createChatBotMessage } from 'react-chatbot-kit';
 import { BotAvatar } from '../components/BotAvatar';
 import { UserAvatar } from '../components/UserAvatar';
-import Button from '../components/Button';
+import { GotIt } from '../components/GotIt';
+import  {CalendarStripe}  from '../components/CalendarStripe';
 
 const config = {
-  initialMessages: [createChatBotMessage(`Hello, Welcome to student info system!`)],
+  initialMessages: [createChatBotMessage(`Hello, Welcome to student info system!`, {
+    withAvatar: true,
+    delay: 500,
+    widget: 'overview',
+  }
+  ),],
   widgets: [
     {
       widgetName: 'overview',
-      widgetFunc: (props: any) => <Button {...props} />,
+      widgetFunc: (props: any) => <GotIt {...props}  />,
+      mapStateToProps: ["messages"]
+    },
+    {
+      widgetName: 'calendar',
+      widgetFunc: (props: any) => <CalendarStripe {...props} />,
+      mapStateToProps: ["messages"]
     }
   ],
   customStyles:{

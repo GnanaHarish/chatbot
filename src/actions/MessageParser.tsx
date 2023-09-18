@@ -7,8 +7,12 @@ interface MessageParserProps{
 
 const MessageParser: React.FC<MessageParserProps> = ({ children, actions }) => {
   const parse = (message: string) => {
-    if(message.includes('hi')){
+    if(message.toLowerCase().includes('hi')){
       actions.handleHello();
+    }
+
+    if(message.toLowerCase().includes('got it')){
+      actions.handleGotIt();
     }
   };
 
@@ -17,7 +21,7 @@ const MessageParser: React.FC<MessageParserProps> = ({ children, actions }) => {
       {React.Children.map(children, (child) => {
         return React.cloneElement(child, {
           parse: parse,
-          actions: {},
+          actions
         });
       })}
     </div>

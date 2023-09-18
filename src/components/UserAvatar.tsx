@@ -8,7 +8,7 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
 }) => {
   return (
     <div>{props}
-        <img src="/public/User.jpg" alt="" className="relative
+        <img src="/User.jpg" alt="" className="relative
             inline-block
             rounded-full
             overflow-hidden

@@ -8,7 +8,7 @@ export const BotAvatar: React.FC<BotAvatarProps> = ({
 }) => {
   return (
     <div>{props}
-        <img src="/public/Bot.png" alt="" className="relative
+        <img src="/Bot.png" alt="" className="relative
             inline-block
             rounded-full
             overflow-hidden

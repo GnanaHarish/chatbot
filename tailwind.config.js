@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         'bg-violet-500': '#8B5CF6',
-        'bg-violet-600': '#7C3AED'
+        'bg-violet-600': '#7C3AED',
       }
     },
   },

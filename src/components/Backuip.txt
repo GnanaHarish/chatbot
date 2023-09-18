@@ -1,0 +1,28 @@
+import { CalendarBox } from "./CalendarBox"
+import useEmblaCarousel from 'embla-carousel-react'
+
+export const CalendarStripe = () => {
+
+  const [emblaRef] = useEmblaCarousel({
+    slidesToScroll: 1,
+    align: "start",
+  })
+
+  return (
+    <div className="flex  gap-2 w-full pt-10 justify-around">
+
+      <div className="flex flex-row gap-7 w-full  p-2">
+        <div className="embla " ref={emblaRef}>
+          <div className="embla__container flex gap-3 justify-stretch w-[200%] overflow-hidden">
+            <CalendarBox date={"5 May"} day={"FRI"} />
+            <CalendarBox date={"6 May"} day={"SAT"} />
+            <CalendarBox date={"6 May"} day={"SAT"} />
+            <CalendarBox date={"6 May"} day={"SAT"} />
+            <CalendarBox date={"6 May"} day={"SAT"} />
+            <CalendarBox date={"6 May"} day={"SAT"} />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}

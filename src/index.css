@@ -9,16 +9,18 @@
 
 .react-chatbot-kit-chat-container {
   width: 100%;
-  overflow: hidden;
+  height: auto;
 }
-
 .react-chatbot-kit-chat-inner-container {
   width: 100%;
+  height: 100%;
+
+  margin-top: 20px;
 }
 
 .react-chatbot-kit-chat-bot-message{
   width: auto;
-  margin-left: 20px
+  margin-left: 20px;
 }
 
 .react-chatbot-kit-user-chat-message{
@@ -26,4 +28,64 @@
   margin-right: 20px;
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.react-chatbot-kit-chat-bot-message-container{
+  
+  margin-top: 30px;
+}
+
+.react-chatbot-kit-chat-btn-send{
+  background-color: #7C3AED;
+}
+
+.react-chatbot-kit-chat-input{
+  border: none;
+}
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.prev-button {
+  left: 0;
+}
+
+.next-button {
+  right: 0;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.calendar-strip {
+  flex: 0 0 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
 }
