@@ -1,36 +1,43 @@
 
 import { CalendarBox } from "./CalendarBox";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export const CalendarStripe = () => {
- 
 
+  const currentDate = new Date();
+  const entries = [];
+  for (let i = 0; i < 10; i++) {
+    const date = new Date(currentDate);
+    date.setDate(currentDate.getDate() + i);
+    const formattedDay = date.toLocaleDateString("en-US", { weekday: "short" });
+    const formattedMonth = date.toLocaleDateString("en-US", { month: "short" });
+    const formattedDate = date.toLocaleDateString("en-US", { day: "2-digit" });
 
-
+    entries.push({
+      day: formattedDay,
+      month: formattedMonth,
+      date: formattedDate
+    });
+  }
   return (
-    <div className="flex gap-2 w-full pt-10 justify-around">
-      
-      <div className="flex flex-row gap-7 w-full p-2">
-      
-        <div className="max-h-96 overflow-auto">
-        
-          <div className=" flex gap-3 justify-stretch w-[200%] ">
-            
-            <CalendarBox date={"5 May"} day={"FRI"} />
-            <CalendarBox date={"6 May"} day={"SAT"} />
-            <CalendarBox date={"6 May"} day={"SAT"} />
-            <CalendarBox date={"6 May"} day={"SAT"} />
-            <CalendarBox date={"6 May"} day={"SAT"} />
-            <CalendarBox date={"6 May"} day={"SAT"} />
-            
+    <div className="flex flex-col">
+      <div className="carousel justify-start  flex  flex-no-wrap overflow-x-scroll scrolling-touch  mb-8 gap-7 mt-10">
+        {entries.map((entry, index) => (
+
+          <div key={index} className="carousel-item">
+            <CalendarBox date={entry.date + " " + entry.month} day={entry.day} />
           </div>
-         
-        </div>
-        
+        ))}
       </div>
-     
+      <div>
+        <h2 className="font-semibold text-2xl">Morning</h2>
+        <div className=" rounded-lg w-[12rem] h-[4rem] flex flex-col text-center justify-center items-center bg-gray-400 hover:bg-violet-600 font-semibold shadow-lg mt-10">
+          <p className="text-white">9:00</p>
+      </div>
+      </div>
     </div>
+
   );
 };
 

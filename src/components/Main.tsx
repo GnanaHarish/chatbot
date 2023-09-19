@@ -12,7 +12,7 @@ export default function Main() {
         setCurrentPage(props)
     }
   return (
-    <div className="min-h-full">
+    <div className="min-h-full ">
         {currentPage === 'intro' && <Intro switchPage = {switchPage}/>}
         {currentPage === 'chat' && <Chat  switchPage = {switchPage}/>}
         {currentPage === 'welcome' && <Welcome  switchPage = {switchPage}/>}
