@@ -19,16 +19,14 @@ const Chat: React.FC<ChatProps> = ({
 }) => {
 
     return (
-        <div>
+        <div className="h-full w-full">
             <Header switchPage={switchPage} />
-            <div className="h-full w-full">
-                <header className="">
+            <div className="h-full w-full" id="chat-div">
                     <Chatbot
                         config={config}
                         messageParser={MessageParser}
                         actionProvider={ActionProvider}
                     />
-                </header>
 
             </div>
         </div>
