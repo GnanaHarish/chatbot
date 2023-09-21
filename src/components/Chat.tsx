@@ -26,6 +26,7 @@ const Chat: React.FC<ChatProps> = ({
                         config={config}
                         messageParser={MessageParser}
                         actionProvider={ActionProvider}
+                        disableScrollToBottom
                     />
 
             </div>

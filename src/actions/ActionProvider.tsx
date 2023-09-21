@@ -36,13 +36,41 @@ const ActionProvider: React.FC<ActionProviderProps> = ({ createChatBotMessage, s
     updateState(botMessage)
     
   }
+
+  const handleTime = () => {
+    const botMessage = createChatBotMessage('Please Enter your name', {
+      delay: 600,
+      widget: 'Name and Age',
+      payload: "name",
+    });
+    updateState(botMessage)
+  }
+
+  const handleAge = () => {
+    const botMessage = createChatBotMessage('Please Enter your age', {
+      delay: 600,
+      widget: 'Name and Age',
+    });
+    updateState(botMessage)
+  }
+
+  const handleFinalMessage = () => {
+    const botMessage = createChatBotMessage('Thank you. In 5 seconds, bot will exit', {
+      delay: 600
+    });
+    updateState(botMessage)
+  }
+
   return (
     <div>
       {React.Children.map(children, (child) => {
         return React.cloneElement(child, {
           actions: {
             handleHello,
-            handleGotIt
+            handleGotIt,
+            handleTime,
+            handleAge,
+            handleFinalMessage
           },
         });
       })}

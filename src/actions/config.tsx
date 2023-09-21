@@ -3,6 +3,7 @@ import { BotAvatar } from '../components/BotAvatar';
 import { UserAvatar } from '../components/UserAvatar';
 import { GotIt } from '../components/GotIt';
 import  {CalendarStripe}  from '../components/CalendarStripe';
+import { NameAndAge } from '../components/NameAndAge';
 
 const config = {
   initialMessages: [createChatBotMessage(`Hello, Welcome to student info system!`, {
@@ -20,6 +21,11 @@ const config = {
     {
       widgetName: 'calendar',
       widgetFunc: (props: any) => <CalendarStripe {...props} />,
+      mapStateToProps: ["messages"]
+    },
+    {
+      widgetName: 'Name and Age',
+      widgetFunc: (props: any) => <NameAndAge {...props} />,
       mapStateToProps: ["messages"]
     }
   ],

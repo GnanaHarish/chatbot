@@ -4,10 +4,22 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useState } from "react";
 import { TimingStrip } from "./TimingStrip";
+import { TimingSubmit } from "./TimingSubmit";
+import clsx from "clsx";
 
-export const CalendarStripe = () => {
+interface CalendarSTripeProps{
+    props: any;
+    setState: any;
+    actionProvider: any,
+    actions: any
+}
+
+export const CalendarStripe: React.FC<CalendarSTripeProps> = (
+  props) => {
 
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
+
+  const [visibility, setVisibility] = useState<boolean>(true);
 
   const handleSelectedDate = (date: string) => {
     setSelectedDate(date)
@@ -18,6 +30,10 @@ export const CalendarStripe = () => {
   const handleSelectedTime = (time: string) => {
     setSelectedTime(time)
   }
+
+  const [scheduleDate, setScheduleDate] = useState<string>("");
+  const [scheduleTime, setScheduleTime] = useState<string>("");
+
 
   const currentDate = new Date();
   const entries = [];
@@ -35,21 +51,22 @@ export const CalendarStripe = () => {
     });
   }
   return (
-    <div className="flex flex-col">
+    <div className={clsx("flex flex-col transition-all", !visibility && 'hidden')}>
       <div className="carousel justify-start  flex  flex-no-wrap overflow-x-scroll scrolling-touch  gap-7 mt-10">
         {entries.map((entry, index) => (
 
           <div key={index} className="carousel-item">
-            <CalendarBox date={entry.date + " " + entry.month} day={entry.day} isTiming={false} selectedDate={selectedDate} onDateClick = {handleSelectedDate}/>
+            <CalendarBox date={entry.date + " " + entry.month} day={entry.day} isTiming={false} selectedDate={selectedDate} onDateClick = {handleSelectedDate} scheduleDate={scheduleDate} setScheduleDate = {setScheduleDate}/>
           </div>
         ))}
       </div>
       <div>
         {/*selectedDate={selectedTime} onDateClick = {handleSelectedTime}*/ } 
-        <TimingStrip  session="Morning" startHour = {9} selectedTime={selectedTime} handleSelectedTime = {handleSelectedTime} length={3}/>
-        <TimingStrip  session="Afternoon" startHour = {12} selectedTime={selectedTime} handleSelectedTime = {handleSelectedTime} length={5}/>
-        <TimingStrip  session="Evening" startHour = {17} selectedTime={selectedTime} handleSelectedTime = {handleSelectedTime} length={4}/>
+        <TimingStrip  session="Morning" startHour = {9} selectedTime={selectedTime} handleSelectedTime = {handleSelectedTime} length={3} scheduleTime={scheduleTime} setScheduleTime = {setScheduleTime}/>
+        <TimingStrip  session="Afternoon" startHour = {12} selectedTime={selectedTime} handleSelectedTime = {handleSelectedTime} length={5} scheduleTime={scheduleTime} setScheduleTime = {setScheduleTime}/>
+        <TimingStrip  session="Evening" startHour = {17} selectedTime={selectedTime} handleSelectedTime = {handleSelectedTime} length={4} scheduleTime={scheduleTime} setScheduleTime = {setScheduleTime}/>
       </div>
+      {(scheduleDate !== "" && scheduleTime !== "") && <TimingSubmit scheduleDateTime = {scheduleDate +" "+ scheduleTime} props={props} visibility={visibility} setVisibility={setVisibility}/>}
     </div>
 
   );

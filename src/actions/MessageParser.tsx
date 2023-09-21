@@ -14,6 +14,10 @@ const MessageParser: React.FC<MessageParserProps> = ({ children, actions }) => {
     if(message.toLowerCase().includes('got it')){
       actions.handleGotIt();
     }
+
+    if(message.toLowerCase().includes('PM')){
+      
+    }
   };
 
   return (
