@@ -2,8 +2,22 @@
 import { CalendarBox } from "./CalendarBox";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useState } from "react";
+import { TimingStrip } from "./TimingStrip";
 
 export const CalendarStripe = () => {
+
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+
+  const handleSelectedDate = (date: string) => {
+    setSelectedDate(date)
+  }
+
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+
+  const handleSelectedTime = (time: string) => {
+    setSelectedTime(time)
+  }
 
   const currentDate = new Date();
   const entries = [];
@@ -26,48 +40,15 @@ export const CalendarStripe = () => {
         {entries.map((entry, index) => (
 
           <div key={index} className="carousel-item">
-            <CalendarBox date={entry.date + " " + entry.month} day={entry.day} isTiming={false} />
+            <CalendarBox date={entry.date + " " + entry.month} day={entry.day} isTiming={false} selectedDate={selectedDate} onDateClick = {handleSelectedDate}/>
           </div>
         ))}
       </div>
       <div>
-        <h2 className="font-bold text-1xl mb-5">Morning</h2>
-        <div className=" flex gap-7 overflow-hidden flex-no-wrap overflow-x-scroll scrolling-touch lg:text-center lg:justify-center">
-          {Array.from({ length: 3 }, (_, index) => (
-            <CalendarBox
-              key={index}
-              date={`${9 + index}:00 AM`}
-              day={""}
-              isTiming={true}
-            />
-          ))}
-        </div>
-        <h2 className="font-bold text-1xl mb-5">Afternoon</h2>
-        <div className=" flex gap-7 overflow-hidden flex-no-wrap overflow-x-scroll scrolling-touch lg:text-center lg:justify-center flex-grow">
-          {Array.from({ length: 4 }, (_, index) => {
-            const hour = 12 + index;
-            const time = hour >= 12 ? `${hour % 12 || 12}:00 PM` : `${hour}:00 AM`;
-            return <CalendarBox
-              key={index}
-              date={time}
-              day={""}
-              isTiming={true}
-            />
-          })}
-        </div>
-        <h2 className="font-bold text-1xl mb-5">Evening</h2>
-        <div className=" flex gap-7 overflow-hidden flex-no-wrap overflow-x-scroll scrolling-touch lg:text-center lg:justify-center flex-grow">
-        {Array.from({ length: 4 }, (_, index) => {
-            const hour = 16 + index;
-            const time = hour >= 12 ? `${hour % 12 || 12}:00 PM` : `${hour}:00 AM`;
-            return <CalendarBox
-              key={index}
-              date={time}
-              day={""}
-              isTiming={true}
-            />
-          })}
-        </div>
+        {/*selectedDate={selectedTime} onDateClick = {handleSelectedTime}*/ } 
+        <TimingStrip  session="Morning" startHour = {9} selectedTime={selectedTime} handleSelectedTime = {handleSelectedTime} length={3}/>
+        <TimingStrip  session="Afternoon" startHour = {12} selectedTime={selectedTime} handleSelectedTime = {handleSelectedTime} length={5}/>
+        <TimingStrip  session="Evening" startHour = {17} selectedTime={selectedTime} handleSelectedTime = {handleSelectedTime} length={4}/>
       </div>
     </div>
 

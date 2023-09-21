@@ -1,7 +1,6 @@
 import clsx from "clsx";
-import { Dispatch, SetStateAction, useState } from "react";
 
-interface CalendarBoxProps {
+interface TimingBoxProps {
   date: string,
   day: string,
   isTiming: boolean,
@@ -9,7 +8,7 @@ interface CalendarBoxProps {
   onDateClick: (date: string) => void
 }
 
-export const CalendarBox: React.FC<CalendarBoxProps> = ({
+export const TimingBox: React.FC<TimingBoxProps> = ({
   date,
   day,
   isTiming,
