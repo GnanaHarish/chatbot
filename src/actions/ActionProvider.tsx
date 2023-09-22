@@ -56,11 +56,13 @@ const ActionProvider: React.FC<ActionProviderProps> = ({ createChatBotMessage, s
 
   const handleFinalMessage = () => {
     const botMessage = createChatBotMessage('Thank you. In 5 seconds, bot will exit', {
-      delay: 600
+      delay: 600,
+      widget: 'Countdown'
     });
     updateState(botMessage)
   }
 
+ 
   return (
     <div>
       {React.Children.map(children, (child) => {

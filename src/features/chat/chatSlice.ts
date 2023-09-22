@@ -1,4 +1,4 @@
-import { createSlice, createSelector  } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export const chatSlice = createSlice({
   name: "chat",
@@ -9,17 +9,17 @@ export const chatSlice = createSlice({
   },
   reducers: {
     addName: (state: any, action: any) => {
-      state.name = action.name;
+      state.name = action.payload;
     },
     addAge: (state: any, action: any) => {
-      state.age = action.age;
+      state.age = action.payload;
     },
     addDate: (state: any, action: any) => {
-      state.date = action.date;
+      state.date = action.payload;
     },
   },
 });
 
 export const { addName, addAge, addDate } = chatSlice.actions;
-export const addDateSelector = (state: any) => state.chat.date;
+
 export default chatSlice.reducer;

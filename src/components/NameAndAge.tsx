@@ -1,6 +1,8 @@
 import clsx from "clsx"
 import { useState } from "react";
 import { createClientMessage } from "react-chatbot-kit";
+import { useDispatch } from "react-redux";
+import { addAge, addName } from "../features/chat/chatSlice";
 
 interface NameAndAgeProps {
     props: any;
@@ -12,7 +14,11 @@ interface NameAndAgeProps {
 
 export const NameAndAge: React.FC<NameAndAgeProps> = (props,) => {
 
-    const [name, setName] = useState("");
+    
+    const dispatch = useDispatch();
+
+
+    const [name, setName] = useState<any>("");
     console.log(props)
     const [visibility, setVisibility] = useState(true);
 
@@ -37,9 +43,11 @@ export const NameAndAge: React.FC<NameAndAgeProps> = (props,) => {
         updateState(botMessage);
         if (props.payload === "name") {
             props.actions.handleAge();
+            dispatch(addName(name));
         }
         else {
             props.actions.handleFinalMessage();
+            dispatch(addAge(name));
         }
         setVisibility(false)
 
@@ -51,7 +59,7 @@ export const NameAndAge: React.FC<NameAndAgeProps> = (props,) => {
             </label>
             <div className='mt-2'>
                 <input type="text" className={clsx(`
-                    form-input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-bg-violet-600 sm:text-sm sm:leading-6`)} value={name} onChange={handleChange} />
+                    form-input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-bg-violet-600 sm:text-sm sm:leading-6 pl-3`)} value={name} onChange={handleChange} />
             </div>
             <button className={clsx("w-[8rem] h-[2rem] rounded-md border border-[#7C3AED] text-[#8B5CF6] font-semibold mt-6")}
                 onClick={handleSubmitNameandAge}

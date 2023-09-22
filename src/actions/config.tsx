@@ -4,6 +4,7 @@ import { UserAvatar } from '../components/UserAvatar';
 import { GotIt } from '../components/GotIt';
 import  {CalendarStripe}  from '../components/CalendarStripe';
 import { NameAndAge } from '../components/NameAndAge';
+import CountdownComponent from '../components/CountdownComponent';
 
 const config = {
   initialMessages: [createChatBotMessage(`Hello, Welcome to student info system!`, {
@@ -26,6 +27,11 @@ const config = {
     {
       widgetName: 'Name and Age',
       widgetFunc: (props: any) => <NameAndAge {...props} />,
+      mapStateToProps: ["messages"]
+    },
+    {
+      widgetName: 'Countdown',
+      widgetFunc: (props: any) => <CountdownComponent {...props} />,
       mapStateToProps: ["messages"]
     }
   ],
