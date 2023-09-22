@@ -8,7 +8,6 @@ import CountdownComponent from '../components/CountdownComponent';
 
 const config = {
   initialMessages: [createChatBotMessage(`Hello, Welcome to student info system!`, {
-    withAvatar: true,
     delay: 500,
     widget: 'overview',
   }
